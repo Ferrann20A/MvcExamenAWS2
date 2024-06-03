@@ -1,0 +1,56 @@
+﻿@model IEnumerable<MvcExamenAWS2.Models.Evento>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Eventos AWS</h1>
+
+<p>
+    <a asp-controller="Eventos" asp-action="EventosByCategoria">
+        Buscador de Eventos por categoría
+    </a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdEvento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Artista)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdCategoria)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Imagen)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdEvento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Artista)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCategoria)
+            </td>
+            <td>
+                <img src="@keys.BucketUrl@item.Imagen" height="100" />
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

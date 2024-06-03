@@ -1,0 +1,64 @@
+﻿@model IEnumerable<MvcExamenAWS2.Models.Evento>
+
+@{
+    ViewData["Title"] = "EventosByCategoria";
+}
+
+<h1>EventosByCategoria</h1>
+
+<form method="post">
+    <label>Id Categoría</label>
+    <input type="text" name="idcategoria" class="form-control" />
+    <br />
+    <button class="btn btn-outline-danger">
+        Buscar
+    </button>
+</form>
+
+@if(Model != null)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdEvento)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nombre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Artista)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdCategoria)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Imagen)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdEvento)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Artista)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdCategoria)
+                    </td>
+                    <td>
+                        <img src="@keys.BucketUrl@item.Imagen" height="100" />
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+}
